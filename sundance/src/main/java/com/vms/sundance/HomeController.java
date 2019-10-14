@@ -38,6 +38,6 @@ public class HomeController {
 	public void goMain(HttpServletResponse response) throws IOException {
 		logger.info("Sundance Page Init()");
 		
-		response.sendRedirect("/sundance/triumIDashBoard"); //아늬 왜 안데??
+		response.sendRedirect("/sundance/triumIDashBoard"); //아니 왜 안데??
 	}
 }
