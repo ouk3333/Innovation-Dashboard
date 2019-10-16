@@ -60,14 +60,14 @@ public class HomeController {
 	public void home(HttpServletResponse response) throws IOException {
 		logger.info("Sundance Page Init()");
 		
-		response.sendRedirect("/sundance/triumIDashBoard");
+		response.sendRedirect("/sundance/triumIDashBoard");    
 	}
 	
 	@RequestMapping(value="/sundance")
 	public void goMain(HttpServletResponse response) throws IOException {
 		logger.info("Sundance Page Init()");
 		
-		response.sendRedirect("/sundance/triumIDashBoard");
+		response.sendRedirect("/sundance/triumIDashBoard"); //아니 왜 안데??
 	}
 	
 	@RequestMapping("/login")
