@@ -12,54 +12,83 @@ var triumIDashBoard = {
 	init : function() {
 		var self = this;
 		
-		loginCheck(isLogin);
+		self.SendKeepAlive();
 	},
-
-	loginFunc : function() {
+	
+	SendKeepAlive : function() {
 		var self = this;
 		
-		var loginData = $('#loginForm').serializeObject();
-		
-		console.log(JSON.stringify(loginData));
-
 		$.ajax({
-			url: getContextPath() + '/login',
+			url: '/SendKeepAlive',
 			type: 'POST',
 			dataType: 'JSON',
 			data: {
-				"content" : JSON.stringify(loginData)
+				"content": ""
 			},
 			success: function(data) {
 				
-				console.log("success");
-				console.log(data);
+				setTimeout(function() {
+					self.SendKeepAlive();
+				}, 1000);
 				
-				self.loginCheck(true);
 			},
-			error: function(jqXHR, status, error){
-				
-				self.loginCheck(false);
-				console.log("Error");
-				console.log(b);
+			error: function(jqXHR, status, error) {
+				console.log(status);
+				console.log(error);
 			}
-			
 		});
-		
 	},
 	
-	loginCheck : function(_isLogin) {
-		if( _isLogin ) {
-			$("#userMenu_Login").css("display", "none");
-			$("#userMenu_LogOut").css("display", "block");
+	GetIPDevices : function() {
+		var self = this;
+		
+		$.ajax({
+			url: getContextPath() + '/GetIPDevices',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				"content": ""
+			},
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(jqXHR, status, error) {
+				console.log(status);
+				console.log(error);
+			}
+		});
+	},
+	
+	GetIPDevice : function() {
+		
+		var self = this;
+		
+		//GetIPDeviceResult
+		var deviceID = [1, 14, 15];
+		
+		for(var i = 0; i < deviceID.length - 1; i++) {
 			
-			$("#loginChk").text("Login");
-			$("#loginChk").css("color", "green");
-		} else {
-			$("#userMenu_Login").css("display", "block");
-			$("#userMenu_LogOut").css("display", "none");
+			var content = {};
 			
-			$("#loginChk").text("Login Fail");
-			$("#loginChk").css("color", "red");
+			content.deviceID = deviceID[i].toString();
+			
+			$.ajax({
+				url : getContextPath() + '/GetIPDevice',
+				type: 'POST',
+				dataType: 'JSON',
+				data : {
+					"content": JSON.stringify(content)
+				},
+				success : function(data) {
+					
+				},
+				error : function(jqXHR, status, error) {
+					console.log(status);
+					console.log(error);
+				}
+			});
+			
+			break;
 		}
 	},
 };

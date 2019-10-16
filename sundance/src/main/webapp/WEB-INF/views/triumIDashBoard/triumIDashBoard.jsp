@@ -35,11 +35,11 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">접속 여부</div>
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">등록된 카메라 개수</div>
 								<div class="h5 mb-0 font-weight-bold" id="loginChk">&nbsp;</div>
 							</div>
 							<div class="col-auto">
-								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+								<i class="icon fas fa-sync-alt" style="font-size: 32px;" onclick="triumIDashBoard.GetIPDevices()" data-toggle="tooltip" data-placement="top" title="새로고침"></i>
 							</div>
 						</div>
 					</div>
@@ -103,75 +103,36 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">Camera Result : 1, 14, 15</h6>
+						<div class="no-arrow">
+							<a class="" href="#">
+								<i class="icon fas fa-sync-alt" style="font-size: 32px;" onclick="triumIDashBoard.GetIPDevice()" data-toggle="tooltip" data-placement="top" title="가져오기"></i>
+							</a>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="chart-area">
+							<div class="chartjs-size-monitor">
+								<div class="chartjs-size-monitor-expand">
+									<div class="" id="GetIPDeviceResult" name="GetIPDeviceResult">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 	
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="loginModalTitle">Trium I Login</h5>
-				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			
-			<div class="modal-body" id="loginModalBody">
-				<form method="POST" name="loginForm" id="loginForm">
-					<input type="hidden" value="@ExternalClient" id="hostType" name="hostType">
-					<div class="row">
-						<div class="col-lg-3" style="text-align: right;">
-							<span> 아이디 : </span>
-						</div>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="userName" name="userName">
-						</div>
-					</div>
-					<div class="m-1"></div>
-					<div class="row">
-						<div class="col-lg-3" style="text-align: right;">
-							<span> 비밀번호 : </span>
-						</div>
-						<div class="col-lg-9">
-							<input type="password" class="form-control" id="userPassword" name="userPassword">
-						</div>
-					</div>
-				</form>
-			</div>
-			
-			<div class="modal-footer" id="loginModalFooter">
-				<!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
-				<a class="btn btn-primary" href="javascript:triumIDashBoard.loginFunc();"">로그인</a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			
-			<div class="modal-body">
-				Select "Logout" below if you are ready to end your current session.
-			</div>
-			
-			<div class="modal-footer">
-				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-				<a class="btn btn-primary" href="login.html">Logout</a>
-			</div>
-		</div>
-	</div>
-</div>
 
 </body>
 
